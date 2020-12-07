@@ -33,9 +33,7 @@ public class GaussianNB
             tmp.Add(new float[features_count_].ToList<float>());
             tmp.Add(new float[features_count_].ToList<float>());
             tmp.Add(new float[features_count_].ToList<float>());
-            f_stats_.Add(label,tmp); // mean mu
-            // f_stats_.Add(label,temp); // variance2 sigma^2
-            // f_stats_.Add(label,temp); // 1/(2_PI_Var^22)
+            f_stats_.Add(label,tmp); 
         }
         foreach(var label in labels_list_){
             lfm.Add(label, new List<List<float>>());
@@ -86,6 +84,7 @@ public class GaussianNB
         foreach(var label in labels_list_){
             norm += ret[label];
         }
+        Assert.IsTrue(norm != 0);
         foreach(var label in labels_list_){
             ret[label] /= norm;
         }
